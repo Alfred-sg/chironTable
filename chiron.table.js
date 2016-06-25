@@ -3,8 +3,7 @@
 $(function(){
 
 function ChironTable(trigger,options){
-	var that=this;
-
+	this.version="0.0.1";
 	this.$trigger=$(trigger);
 	this.options=options;
 	this.originOptions=$.extend(true,{},options);
