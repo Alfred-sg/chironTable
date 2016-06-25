@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+
+<body>
+<div class="" style="width:1000px;margin:50px auto">
+	<div id="table">
+	</div>
+</div>
+
+
+<script src="jquery-1.12.4.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="chiron.table.js"></script>
+<script>
+
+$(function(){
+
+	$("#table").chironTable({
+		columns:[{field:"name",title:"你好"},{field:"value",title:"你好1"}],
+		data:[{name:1,value:234,class:"nihaode"},{name:2,value:235},{name:3,value:225},{name:4,value:234},{name:5,value:235}],
+		cellBinder:{"1-0":[{eventName:"click",captureNode:".inner-td",eventHandler:function(){console.log(this)}}]}
+	})/*.chironTable("addItem",{name:223,value:333})*/
+
+
+});
+
+</script>
+</body>
+</html>
