@@ -1028,7 +1028,7 @@ $.prototype.chironPagination=function(option){
 		htmlOptions={};
 
 	$.each(ChironPagination.DEFAULTS,function(key){
-		htmlOptions[key]=$(that).data()[key];
+		if ( $(that).data()[key] ) htmlOptions[key]=$(that).data()[key];
 	});
 
 	options=$.extend({},ChironPagination.DEFAULTS,htmlOptions,typeof option==='object' && option);
@@ -1066,7 +1066,7 @@ $.prototype.chironPagination=function(option){
 	};
 
 	// Return dom object or the result of ChironPagination instance method.
-	return typeof value=='undefined' ? $(this) : value;
+	return typeof value==undefined ? $(this) : value;
 };
 
 /*   jQuery chironTable plugin   */
@@ -1078,10 +1078,10 @@ $.prototype.chironTable=function(option){
 		htmlOptions={};
 
 	$.each(ChironTable.DEFAULTS,function(key){
-		htmlOptions[key]=$(that).data()[key];
+		if ( $(that).data()[key] ) htmlOptions[key]=$(that).data()[key];
 	});
 
-	options=$.extend({},ChironTable.DEFAULTS,htmlOptions,typeof option==='object' && option);
+	options=$.extend(true,{},ChironTable.DEFAULTS,htmlOptions,typeof option==='object' && option);
 
 	// If options's type is string,execute the corresponding method of ChironTable instance.
 	if ( typeof option=="string" ){
@@ -1116,7 +1116,7 @@ $.prototype.chironTable=function(option){
 	};
 
 	// Return dom object or the result of ChironTable instance method.
-	return typeof value=='undefined' ? $(this) : value;
+	return typeof value==undefined ? $(this) : value;
 };
 
 function equal(objA,objB){
