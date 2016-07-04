@@ -23,7 +23,7 @@ ChironTable.DEFAULTS={
 	cellData:{},
 	group:false,
 	dragable:false,
-	pagination:true,
+	pagination:false,
 	slide:"client",
 	queryParam:{},
 	formatThead:function(text){
@@ -91,7 +91,7 @@ ChironTable.prototype.renderTools=function(){
 
 	if ( that.options.pagination ){
 		if ( that.options.slide=="client" ){
-			$("<div style='margin-top:-20px'></div>").appendTo(that.$trigger)
+			that.$pagination=$("<div style='margin-top:-20px'></div>").appendTo(that.$trigger)
 				.chironPagination({
 					data:that.options.data,
 					perPageItems:2,
@@ -101,7 +101,7 @@ ChironTable.prototype.renderTools=function(){
 					}
 				});
 		}else{
-			$("<div style='margin-top:-20px'></div>").appendTo(that.$trigger)
+			that.$pagination=$("<div style='margin-top:-20px'></div>").appendTo(that.$trigger)
 				.chironPagination({
 					data:that.options.data,
 					slide:"server",
@@ -494,7 +494,12 @@ ChironTable.prototype.getData=function(){
 	return that.options.data;
 };
 
-var allowedMethods=["refresh","addItem","delItem","getData"];
+ChironTable.prototype.destroy=function(){
+	this.$table.remove();
+	this.$pagination.remove();
+};
+
+var allowedMethods=["refresh","addItem","delItem","getData","destroy"];
 
 /*   util   */
 function sort(array,key){
